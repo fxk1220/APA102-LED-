@@ -1,0 +1,28 @@
+
+1. check the SPI GPIO, input:
+    gpio readall 
+
+2. you can see the spidev0 is pin19 and pin21, shorcuri the pin19 and pin 21
+
+3. ./demo
+   you can get the spi read data ; 
+
+test LED OK ;
+
+
+APA102  data format:
+
+SDI  [0*32]        [LED1]    [LED2]   [LED3]  [----]  [LEDn]   [1*32]
+     Start Frame    LED Frame                                   END Frame
+
+start Frame 32 bits  0 
+
+LED Frame 32 bits 
+MSB   LSB       MSB LSB 
+| 111 Global |  BLUE | GREEN | RED |   
+3bits  5bits    8bits   8 bits  8bits 
+
+Global bits is 32 level brightness 
+R G B 255 level color set 
+
+END Frame 32 bits 1
